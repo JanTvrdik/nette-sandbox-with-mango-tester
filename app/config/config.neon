@@ -4,6 +4,7 @@
 #
 extensions:
 	console: Contributte\Console\DI\ConsoleExtension
+	migrations: Nextras\Migrations\Bridges\NetteDI\MigrationsExtension
 
 
 application:
@@ -22,6 +23,12 @@ database:
 	password:
 	options:
 		lazy: yes
+
+
+migrations:
+	dir: %appDir%/../migrations # migrations base directory
+	driver: mysql               # pgsql or mysql
+	dbal: nette                 # nextras, nette, doctrine or dibi
 
 
 services:
