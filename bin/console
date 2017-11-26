@@ -1,0 +1,10 @@
+#!/usr/bin/env php
+<?php
+
+$dic = require __DIR__ . '/../app/bootstrap.php';
+assert($dic instanceof Nette\DI\Container);
+
+$app = $dic->getByType(Contributte\Console\Application::class);
+$exitCode = $app->run();
+
+exit($exitCode);
