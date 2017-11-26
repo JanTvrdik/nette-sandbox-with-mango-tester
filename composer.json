@@ -34,12 +34,13 @@
 		"dg/adminer-custom": "^1.9"
 	},
 	"require-dev": {
-		"nette/tester": "^2.0"
+		"nette/tester": "^2.0",
+		"mockery/mockery": "^1.0",
+		"contributte/console": "^0.2",
+		"nextras/migrations": "dev-master",
+		"mangoweb/presenter-tester": "dev-master",
+		"mangoweb/tester-database-creator": "dev-master",
+		"mangoweb/tester-infrastructure": "dev-master"
 	},
-	"minimum-stability": "stable",
-	"config": {
-		"platform": {
-			"php": "5.6"
-		}
-	}
+	"minimum-stability": "stable"
 }
