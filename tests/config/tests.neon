@@ -1,0 +1,42 @@
+extensions:
+	migrations: Nextras\Migrations\Bridges\NetteDI\MigrationsExtension
+	mango.tester: Mangoweb\Tester\Infrastructure\MangoTesterExtension
+	mango.tester.databaseCreator: Mangoweb\Tester\DatabaseCreator\Bridges\NetteDI\DatabaseCreatorExtension
+
+
+parameters:
+	appContainer:
+		parameters:
+			appDir: %appDir%
+			wwwDir: %wwwDir%
+			tempDir: %tempDir%
+		configFiles:
+			- %appDir%/config/config.neon
+			- %appDir%/config/config.local.neon
+		databaseConnectionServiceName: database.default.connection
+
+
+
+migrations:
+	dir: %appDir%/../migrations # migrations base directory
+	driver: mysql               # pgsql or mysql
+	dbal: nette                 # nextras, nette, doctrine or dibi
+
+
+database:
+	dsn: 'mysql:host=127.0.0.1;dbname=test'
+	user:
+	password:
+	options:
+		lazy: yes
+
+
+mango.tester.databaseCreator:
+	driver: mysql
+	dbal: Mangoweb\Tester\DatabaseCreator\Bridges\NextrasMigrations\MySqlNextrasMigrationsDbalAdapter
+	migrations: Mangoweb\Tester\DatabaseCreator\Bridges\NextrasMigrations\NextrasMigrationsDriver
+	strategy: reset
+
+
+services:
+	- AppTests\AppConfiguratorFactory
